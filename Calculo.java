@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package imc;
 
 import java.text.DecimalFormat;
@@ -32,24 +28,27 @@ public class Calculo {
     
     public String mensagem(String res) {
         
-        double rs = converterStringParaDouble(res);
+        float rs = converterStringParaFloat(res);
         
         if ((rs > 18.7) && (rs < 23.7)) {
             
-            return "Parabéns! Dá pra não morrer.";
+            return "Tá suave.";
+            
+        } else if (rs > 23.7) {
+            
+            return "Você está acima do peso.";
             
         } else {
             
-            return "Só lhe resta mais algumas horas.";
+            return "Você está abaixo do peso.";
             
         }
     }
     
-    private double converterStringParaDouble(String valorString) {
-        // Substitui todas as vírgulas por pontos
+    // CONVERTE UM VALOR STRING PARA FLOAT E TAMBÉM TROCA A VÍRGULA POR PONTO
+    public float converterStringParaFloat(String valorString) {
         valorString = valorString.replace(',', '.');
-        // Converte a string para double
-        return Double.parseDouble(valorString);
+        return Float.parseFloat(valorString);
     }
-     
+    
 }
