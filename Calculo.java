@@ -9,11 +9,13 @@ import java.text.DecimalFormat;
 
 /**
  *
- * @author souza
+ * @author Kiq3712
  */
 
 public class Calculo {
     
+
+    // CALCULA O VALOR DE RETORNO PARA O USUARIO
     public String calcularIMC(float altura, float peso) {
         
         float res = peso / (altura * altura);
@@ -22,6 +24,8 @@ public class Calculo {
         
     }
     
+
+    // FORMATA O VALOR DE RETORNO PARA O USUARIO
     private String formatar(float imc) {
         
         DecimalFormat df = new DecimalFormat("#.##");
@@ -30,21 +34,34 @@ public class Calculo {
         
     }
     
+
+    // RECEBE O VALOR DE RETORNO PARA VER QUAL MENSAGEM DEVE SER IMPRESSA
     public String mensagem(String res) {
         
         double rs = converterStringParaDouble(res);
         
-        if ((rs > 18.7) && (rs < 23.7)) {
+        if ((rs < 18.5){
             
-            return "Parabéns! Dá pra não morrer.";
-            
+            return "Você está abaixo do peso.";
+
+        } else if (rs >= 18.5 && rs < 25) {
+
+            return "seu peso está normal.";
+
+        } else if ( rs >= 25 && rs < 30) {
+
+            return "Você está com sobrepeso.";
+
         } else {
-            
-            return "Só lhe resta mais algumas horas.";
-            
+
+            return "Você está com obesidade.";
+
         }
+
     }
     
+
+    // 
     private double converterStringParaDouble(String valorString) {
         // Substitui todas as vírgulas por pontos
         valorString = valorString.replace(',', '.');
